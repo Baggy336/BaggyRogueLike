@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Character
 {
-    public class CharacterStats : ScriptableObject
+    public class CharacterStats
     {
         [System.Serializable]
         public class Base

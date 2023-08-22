@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Ability
 {
-    public class AbilityStats : ScriptableObject
+    public class AbilityStats
     {
         [System.Serializable]
         public class Base
@@ -13,3 +13,5 @@ namespace Ability
         }
     }
 }
+
+

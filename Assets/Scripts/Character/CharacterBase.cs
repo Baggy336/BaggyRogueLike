@@ -1,3 +1,5 @@
+using Ability;
+using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +31,10 @@ namespace Character
         [Space(5)]
         public CharacterStats.Base baseStats;
 
-
+        [Space(10)]
+        [Header("Character Settings")]
+        [Space(5)]
+        public List<AbilityBase> abilities = new List<AbilityBase>();
     }
 }
 
