@@ -261,6 +261,9 @@ GameObject:
   - component: {fileID: 731264673}
   - component: {fileID: 731264672}
   - component: {fileID: 731264671}
+  - component: {fileID: 731264678}
+  - component: {fileID: 731264677}
+  - component: {fileID: 731264676}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -281,9 +284,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats: {fileID: 11400000, guid: 8308dd38f96fc7c459cfc65ded619f0c, type: 2}
-  Abilities:
-  - {fileID: 11400000, guid: c2d7eb0c604406a4698cd77ed81799ea, type: 2}
-  - {fileID: 11400000, guid: 983561d82ebc0c444963e68696f43df1, type: 2}
+  _movement: {fileID: 731264678}
+  _abilityController: {fileID: 731264676}
+  _inputController: {fileID: 731264677}
 --- !u!136 &731264672
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -372,6 +375,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &731264676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731264670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e7253d1920cae4f875b6c1e41954bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Abilities:
+  - {fileID: 11400000, guid: c2d7eb0c604406a4698cd77ed81799ea, type: 2}
+  - {fileID: 11400000, guid: 983561d82ebc0c444963e68696f43df1, type: 2}
+  _inputController: {fileID: 731264677}
+--- !u!114 &731264677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731264670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c97a9da9e400c449d855c8053e143f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableLayers:
+  - serializedVersion: 2
+    m_Bits: 1024
+  - serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &731264678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731264670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64abd39e69787a941ae16e3f3defc8d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &755814298
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +432,7 @@ GameObject:
   - component: {fileID: 755814301}
   - component: {fileID: 755814300}
   - component: {fileID: 755814299}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

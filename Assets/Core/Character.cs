@@ -1,3 +1,4 @@
+using Controller;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,46 +11,27 @@ namespace Core
         public CharacterStats Stats;
 
         [SerializeField]
-        public List<Ability> Abilities;
+        private MovementController _movement;
+
+        [SerializeField]
+        private AbilityController _abilityController;
+
+        [SerializeField]
+        private InputController _inputController;
 
         private void Start()
         {
-            //Debug.Log("Character Name: " + Stats.CharacterName);
-            //Debug.Log("Health: " + Stats.Health);
-            //Debug.Log("Attack Damage: " + Stats.AttackDamage);
-            //Debug.Log("Move Speed: " + Stats.MoveSpeed);
-
-            //foreach(Ability ability in Abilities)
-            //{
-            //    Debug.Log("Ability Name: " + ability.AbilityName);
-            //    Debug.Log("Ability Description: " + ability.AbilityDescription);
-            //    Debug.Log("Cooldown: " + ability.Cooldown);
-            //    Debug.Log("Damage: " + ability.Damage);
-            //}
-
-            foreach(Ability ability in Abilities)
-            {
-                ability.Initialize();
-            }
+            
         }
 
         private void Update()
         {
-            foreach (Ability ability in Abilities)
-            {
-                if(Input.GetKeyDown(ability.CastKeyCode))
-                {
-                    if(ability.IsOffCooldown())
-                    {
-                        ability.Use();
-                        Debug.Log("Used :" + ability.AbilityName);
-                    }
-                    else
-                    {
-                        Debug.Log(ability.AbilityName + " On Cooldown");
-                    }
-                }
-            }
+
         }
+
+        private void MoveCharacter(Vector3 destination)
+        {
+            _movement.MoveTo(destination, Stats.MoveSpeed);
+        } 
     }
 }
