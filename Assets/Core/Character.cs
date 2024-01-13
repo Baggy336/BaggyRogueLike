@@ -13,25 +13,14 @@ namespace Core
         [SerializeField]
         private MovementController _movement;
 
-        [SerializeField]
-        private AbilityController _abilityController;
-
-        [SerializeField]
-        private InputController _inputController;
-
         private void Start()
         {
-            
+            _movement.moveSpeed = Stats.MoveSpeed;
         }
 
         private void Update()
         {
 
         }
-
-        private void MoveCharacter(Vector3 destination)
-        {
-            _movement.MoveTo(destination, Stats.MoveSpeed);
-        } 
     }
 }

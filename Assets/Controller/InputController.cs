@@ -62,7 +62,7 @@ public class InputController : MonoBehaviour
                 
                 foreach(LayerMask layer in interactableLayers)
                 {
-                    if(hitLayer == layer.value)
+                    if(hitLayer == (int)Mathf.Log(layer.value, 2))
                     {
                         HandleValidHitLayer(hit.point, hitLayer);
                         break;
