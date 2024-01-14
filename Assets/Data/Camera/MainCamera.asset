@@ -18,3 +18,5 @@ MonoBehaviour:
   zoomSpeed: 120
   zoomMiny: 8
   zoomMaxy: 20
+  cameraCenterPlayerKey: 49
+  cameraLockToPlayerKey: 121

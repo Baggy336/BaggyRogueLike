@@ -7,10 +7,17 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private CameraSettings CameraValues;
 
+    [SerializeField]
+    private Character _character;
+
+    private bool cameraLockOnPlayer = false;
+
     private void Update()
     {
         CheckMouseEdgePan();
         CheckMouseZoom();
+        CheckCameraCenterOnPlayer();
+        CameraFollowPlayer();
     }
 
     private void CheckMouseEdgePan()
@@ -63,6 +70,43 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    private void CheckCameraCenterOnPlayer()
+    {
+        if(Input.GetKeyDown(CameraValues.cameraCenterPlayerKey))
+        {
+            transform.position = CalculateCameraSnapToPlayerPosition();
+        }
+        else if(Input.GetKeyDown(CameraValues.cameraLockToPlayerKey))
+        {
+            ToggleCameraLockOnPlayer();
+        }
+    }
+
+    private void CameraFollowPlayer()
+    {
+        if(cameraLockOnPlayer)
+        {
+            transform.position = CalculateCameraSnapToPlayerPosition();
+        }
+    }
+
+    private void ToggleCameraLockOnPlayer()
+    {
+        cameraLockOnPlayer = !cameraLockOnPlayer;
+    }
+
+    private Vector3 CalculateCameraSnapToPlayerPosition()
+    {
+        float zoomOffset = (CameraValues.zoomMaxy - transform.position.y) / (CameraValues.zoomMaxy - CameraValues.zoomMiny) * 10f;
+
+        Vector3 snapVector = new Vector3(_character.transform.position.x, transform.position.y, _character.transform.position.z)
+                                 + Quaternion.Euler(transform.eulerAngles.x, 0, 0) * new Vector3(0, 0, -20f) + transform.forward * zoomOffset;
+        snapVector.y = transform.position.y;
+
+        return snapVector;
+
+    }
+
     private void PanCamera(Vector3 destination)
     {
         transform.position = AnimMath.Lerp(transform.position, destination, CameraValues.edgePanSpeed * Time.deltaTime, false);
@@ -70,7 +114,6 @@ public class CameraController : MonoBehaviour
 
     private void ZoomCamera(float zoom)
     {
-        float newY = AnimMath.Lerp(transform.position.y, zoom, CameraValues.zoomSpeed * Time.deltaTime, false);
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        transform.position = new Vector3(transform.position.x, AnimMath.Lerp(transform.position.y, zoom, CameraValues.zoomSpeed * Time.deltaTime, false), transform.position.z);
     }
 }

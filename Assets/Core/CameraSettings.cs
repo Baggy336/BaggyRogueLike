@@ -14,6 +14,8 @@ namespace Core
         public float zoomSpeed = 15f;
         public float zoomMiny = 20f;
         public float zoomMaxy = 120f;
+        public KeyCode cameraCenterPlayerKey;
+        public KeyCode cameraLockToPlayerKey;
     }
 }
 
