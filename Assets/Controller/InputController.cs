@@ -1,9 +1,8 @@
 using Core;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class InputController : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class InputController : MonoBehaviour
     private void Update()
     {
         CheckAbilityInput();
-        CheckMouseInput();
+        CheckRightMouseButtonInput();
     }
 
     // AbilityController will pass the abilitykeys to this class to register
@@ -48,7 +47,7 @@ public class InputController : MonoBehaviour
         }
     }
 
-    public void CheckMouseInput()
+    public void CheckRightMouseButtonInput()
     {
         if(Input.GetMouseButtonDown(1))
         {
@@ -80,7 +79,7 @@ public class InputController : MonoBehaviour
         switch (layerName)
         {
             case "Ground":
-                MovementInput(hitLocatiion); //TODO Make MovementController subscribe to this
+                MovementInput(hitLocatiion);
                 break;
             case "Enemy":
                 AttackInput(hitLocatiion); // TODO make this send a gameobject to attack rather than location?
