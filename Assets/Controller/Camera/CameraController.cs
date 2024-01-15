@@ -74,7 +74,10 @@ public class CameraController : MonoBehaviour
     {
         if(Input.GetKeyDown(CameraValues.cameraCenterPlayerKey))
         {
-            transform.position = CalculateCameraSnapToPlayerPosition();
+            if(!cameraLockOnPlayer)
+            {
+                transform.position = CalculateCameraSnapToPlayerPosition();
+            }
         }
         else if(Input.GetKeyDown(CameraValues.cameraLockToPlayerKey))
         {

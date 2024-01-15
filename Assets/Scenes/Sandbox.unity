@@ -513,6 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats: {fileID: 11400000, guid: 8308dd38f96fc7c459cfc65ded619f0c, type: 2}
   _movement: {fileID: 310413272098652584}
+  _healthController: {fileID: 7804331536302445979}
 --- !u!1 &3682614106558075069
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +530,7 @@ GameObject:
   - component: {fileID: 310413272098652584}
   - component: {fileID: 386089119188933541}
   - component: {fileID: 7804331536302445978}
+  - component: {fileID: 7804331536302445979}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -602,3 +604,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c2d7eb0c604406a4698cd77ed81799ea, type: 2}
   - {fileID: 11400000, guid: 983561d82ebc0c444963e68696f43df1, type: 2}
   _inputController: {fileID: 386089119188933541}
+--- !u!114 &7804331536302445979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682614106558075069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3684ba52e22b04bb65f5f5d3378cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,8 +8,12 @@ namespace Core
     public class CharacterStats : ScriptableObject
     {
         public string CharacterName;
-        public int Health;
-        public int AttackDamage;
-        public float MoveSpeed;
+        public int InitialMaxHealth;
+        public int InitialAttackDamage;
+        public float InitialMoveSpeed;
+        public int InitialLevelUpExpAmount;
+
+        [SerializeField]
+        public LevelUpModifiers LevelUpModifiers;
     }
 }    
