@@ -4,17 +4,18 @@ using UnityEngine;
 
 namespace Core
 {
-    [CreateAssetMenu(fileName = "New Character Stats", menuName = "Character Stats")]
-    public class CharacterStats : ScriptableObject
+    [CreateAssetMenu(fileName = "New Enemy Stats", menuName = "Enemy Stats")]
+    public class EnemyStats : ScriptableObject
     {
-        public string CharacterName;
+        public string EnemyName;
         public int InitialMaxHealth;
         public int InitialAttackDamage;
         public float InitialMoveSpeed;
-        public int InitialLevelUpExpAmount;
+        public int InitialAggroRange;
+        public int InitialAttackRange;
         public float InitialTurnRadius;
 
         [SerializeField]
-        public CharacterLevelUpModifiers CharacterLevelUpModifiers;
+        public EnemyLevelUpModifiers EnemyLevelUpModifiers;
     }
-}    
+}

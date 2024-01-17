@@ -1,7 +1,9 @@
 using Controller;
 using UnityEngine;
+using Domain;
+using Core;
 
-namespace Core
+namespace Controller
 {
     public class Character : MonoBehaviour
     {
@@ -9,7 +11,7 @@ namespace Core
         public CharacterStats Stats;
 
         [SerializeField]
-        private MovementController _movement;
+        private CharacterMovementController _characterMovement;
 
         [SerializeField]
         private HealthController _healthController;
@@ -22,7 +24,8 @@ namespace Core
         {
             _runtimeStats = new CharacterRuntimeStats(Stats);
             _expController = new ExpController(_runtimeStats);
-            _movement.moveSpeed = _runtimeStats.MoveSpeed;
+            _characterMovement.moveSpeed = _runtimeStats.MoveSpeed;
+            _characterMovement.rotationSpeed = _runtimeStats.TurnRadius;
             _healthController.InitializeHealth(_runtimeStats);
 
             _healthController.OnHealthDepleted += HandleDeath;

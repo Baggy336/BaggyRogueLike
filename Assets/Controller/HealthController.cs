@@ -1,4 +1,5 @@
 using Core;
+using Domain;
 using System;
 using UnityEngine;
 
@@ -10,9 +11,9 @@ namespace Controller
 
         public int currentHealth { get; private set; }
 
-        private CharacterRuntimeStats Stats;
+        private IRuntimeStats Stats;
 
-        public void InitializeHealth(CharacterRuntimeStats stats)
+        public void InitializeHealth(IRuntimeStats stats)
         {
             Stats = stats;
             currentHealth = stats.CurrentHealth;

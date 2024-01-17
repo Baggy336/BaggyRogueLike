@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Core
 {
     [CreateAssetMenu(fileName = "New Character Level Info", menuName = "Level Up Modifiers")]
-    public class LevelUpModifiers : ScriptableObject
+    public class CharacterLevelUpModifiers : ScriptableObject
     {
         public int MaxHealthIncrease;
         public int AttackDamageIncrease;

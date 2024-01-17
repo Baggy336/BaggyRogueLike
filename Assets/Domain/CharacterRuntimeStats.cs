@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Core;
 using GlobalConfigs;
 
-namespace Core
+namespace Domain
 {
     [System.Serializable]
-    public class CharacterRuntimeStats
+    public class CharacterRuntimeStats : IRuntimeStats
     {
+        public int MaxHealth { get; set; }
+        public int CurrentHealth { get; set; }
+        public int AttackDamage { get; set; }
+        public float MoveSpeed { get; set; }
+        public float TurnRadius { get; set; }
+
         // Character stats
-        public int MaxHealth;
-        public int CurrentHealth;
-        public int AttackDamage;
-        public float MoveSpeed;
         public int Exp;
         public int CharacterLevel;
         public int LevelUpExpAmount;
@@ -31,15 +31,16 @@ namespace Core
             CurrentHealth = baseStats.InitialMaxHealth;
             AttackDamage = baseStats.InitialAttackDamage;
             MoveSpeed = baseStats.InitialMoveSpeed;
+            TurnRadius = baseStats.InitialTurnRadius;
             LevelUpExpAmount = CharacterLevelConfig.InitialLevelUpExpAmount;
             Exp = 0;
             CharacterLevel = 1;
 
             // Level Up Modifiers
-            MoveSpeedIncrease = baseStats.LevelUpModifiers.MoveSpeedIncrease;
-            AttackDamageIncrease = baseStats.LevelUpModifiers.AttackDamageIncrease;
-            MaxHealthIncrease = baseStats.LevelUpModifiers.MaxHealthIncrease;
-            LevelUpExpAmountIncrease = baseStats.LevelUpModifiers.LevelUpExpAmountIncrease;
+            MoveSpeedIncrease = baseStats.CharacterLevelUpModifiers.MoveSpeedIncrease;
+            AttackDamageIncrease = baseStats.CharacterLevelUpModifiers.AttackDamageIncrease;
+            MaxHealthIncrease = baseStats.CharacterLevelUpModifiers.MaxHealthIncrease;
+            LevelUpExpAmountIncrease = baseStats.CharacterLevelUpModifiers.LevelUpExpAmountIncrease;
 
         }
     }

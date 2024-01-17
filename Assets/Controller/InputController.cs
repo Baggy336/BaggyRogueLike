@@ -10,7 +10,7 @@ public class InputController : MonoBehaviour
     public static Action<KeyCode> OnAbilityInput;
 
     // Subscribed to in the MovementController
-    public static Action<Vector3> OnMovementInput;
+    public static Action<Vector3> OnCharacterMovementInput;
 
     // Subscribed to in the AttackController
     public static Action<Vector3> OnAttackInput;
@@ -91,7 +91,7 @@ public class InputController : MonoBehaviour
 
     private void MovementInput(Vector3 location)
     {
-        OnMovementInput?.Invoke(location);
+        OnCharacterMovementInput?.Invoke(location);
     }
     
     private void AttackInput(Vector3 location)
