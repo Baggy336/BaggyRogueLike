@@ -17,6 +17,6 @@ MonoBehaviour:
   InitialAttackDamage: 2
   InitialMoveSpeed: 2
   InitialAggroRange: 4
-  InitialAttackRange: 1
+  InitialAttackRange: 2
   InitialTurnRadius: 800
   EnemyLevelUpModifiers: {fileID: 11400000, guid: 477add5df9b678b4fb144b3a65302ec3, type: 2}

@@ -18,4 +18,5 @@ MonoBehaviour:
   InitialMoveSpeed: 8
   InitialLevelUpExpAmount: 50
   InitialTurnRadius: 800
+  InitialAttackRange: 5
   CharacterLevelUpModifiers: {fileID: 11400000, guid: 00f2c026ff9e7e542a45f0a08928bc32, type: 2}

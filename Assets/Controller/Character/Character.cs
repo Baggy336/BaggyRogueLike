@@ -16,6 +16,9 @@ namespace Controller
         [SerializeField]
         private HealthController _healthController;
 
+        [SerializeField]
+        private AttackController _attackController;
+
         private CharacterRuntimeStats _runtimeStats;
 
         private ExpController _expController;
@@ -27,6 +30,7 @@ namespace Controller
             _characterMovement.moveSpeed = _runtimeStats.MoveSpeed;
             _characterMovement.rotationSpeed = _runtimeStats.TurnRadius;
             _healthController.InitializeHealth(_runtimeStats);
+            _attackController.InitializeAttackController(_runtimeStats);
 
             _healthController.OnHealthDepleted += HandleDeath;
         }

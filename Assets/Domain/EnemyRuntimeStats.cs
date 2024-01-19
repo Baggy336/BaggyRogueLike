@@ -8,11 +8,11 @@ namespace Domain
         public int MaxHealth { get; set; }
         public int CurrentHealth { get; set; }
         public int AttackDamage { get; set; }
+        public int AttackRange { get; set; }
         public float MoveSpeed { get; set; }
         public float TurnRadius { get; set; }
 
         // Enemy stats
-        public int AttackRange;
         public int AggroRange;
 
         // Level up modifiers

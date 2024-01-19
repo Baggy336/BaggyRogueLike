@@ -13,7 +13,7 @@ public class InputController : MonoBehaviour
     public static Action<Vector3> OnCharacterMovementInput;
 
     // Subscribed to in the AttackController
-    public static Action<Vector3> OnAttackInput;
+    public static Action<GameObject> OnAttackInput;
 
     private List<KeyCode> abilityKeys = new List<KeyCode>();
 
@@ -63,7 +63,7 @@ public class InputController : MonoBehaviour
                 {
                     if(hitLayer == (int)Mathf.Log(layer.value, 2))
                     {
-                        HandleValidHitLayer(hit.point, hitLayer);
+                        HandleValidHitLayer(hit.point, hit.transform.gameObject, hitLayer); //TODO Just pass the hit to a method, and use the hit information to call other methods
                         break;
                     }
                 } 
@@ -72,17 +72,18 @@ public class InputController : MonoBehaviour
         }
     }
 
-    private void HandleValidHitLayer(Vector3 hitLocatiion, int hitLayer)
+    private void HandleValidHitLayer(Vector3 hitLocation, GameObject hitObject, int hitLayer)
     {
         string layerName = LayerMask.LayerToName(hitLayer);
 
         switch (layerName)
         {
             case "Ground":
-                MovementInput(hitLocatiion);
+                AttackInput(null);
+                MovementInput(hitLocation);
                 break;
             case "Enemy":
-                AttackInput(hitLocatiion); // TODO make this send a gameobject to attack rather than location?
+                AttackInput(hitObject);
                 break;
             default:
                 break;
@@ -94,8 +95,8 @@ public class InputController : MonoBehaviour
         OnCharacterMovementInput?.Invoke(location);
     }
     
-    private void AttackInput(Vector3 location)
+    private void AttackInput(GameObject hitEnemy)
     {
-        OnAttackInput?.Invoke(location);
+        OnAttackInput?.Invoke(hitEnemy);
     }
 }

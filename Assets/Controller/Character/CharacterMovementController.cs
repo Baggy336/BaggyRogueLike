@@ -22,6 +22,8 @@ namespace Controller
         private void Start()
         {
             InputController.OnCharacterMovementInput += HandleMovement;
+            AttackController.MoveIntoAttackRange += HandleMovement;
+            AttackController.StopMoving += StopMovement;
             movementDestination = GetAdjustedForGroundDestination(transform.position); // Set Initial movement
         }
 
@@ -29,6 +31,11 @@ namespace Controller
         {
             MoveTo(movementDestination);
             RotateTo(rotationDestination);
+        }
+
+        private void StopMovement()
+        {
+            movementDestination = transform.position;
         }
 
         private void HandleMovement(Vector3 destination)
@@ -93,7 +100,8 @@ namespace Controller
 
         private void OnDestroy()
         {
-            InputController.OnCharacterMovementInput -= SetMovementDestination;
+            AttackController.MoveIntoAttackRange -= HandleMovement;
+            InputController.OnCharacterMovementInput -= HandleMovement;
         }
     }
 }

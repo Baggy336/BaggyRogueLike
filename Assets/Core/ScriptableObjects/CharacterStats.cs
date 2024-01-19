@@ -13,6 +13,7 @@ namespace Core
         public float InitialMoveSpeed;
         public int InitialLevelUpExpAmount;
         public float InitialTurnRadius;
+        public int InitialAttackRange;
 
         [SerializeField]
         public CharacterLevelUpModifiers CharacterLevelUpModifiers;
