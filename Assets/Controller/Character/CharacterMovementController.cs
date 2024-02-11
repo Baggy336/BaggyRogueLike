@@ -22,8 +22,8 @@ namespace Controller
         private void Start()
         {
             InputController.OnCharacterMovementInput += HandleMovement;
-            AttackController.MoveIntoAttackRange += HandleMovement;
-            AttackController.StopMoving += StopMovement;
+            CharacterAttackController.MoveIntoAttackRange += HandleMovement;
+            CharacterAttackController.StopMoving += StopMovement;
             movementDestination = GetAdjustedForGroundDestination(transform.position); // Set Initial movement
         }
 
@@ -100,7 +100,7 @@ namespace Controller
 
         private void OnDestroy()
         {
-            AttackController.MoveIntoAttackRange -= HandleMovement;
+            CharacterAttackController.MoveIntoAttackRange -= HandleMovement;
             InputController.OnCharacterMovementInput -= HandleMovement;
         }
     }

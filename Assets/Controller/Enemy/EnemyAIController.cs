@@ -1,7 +1,5 @@
 using Domain;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Controller
@@ -10,22 +8,29 @@ namespace Controller
     {
         public static Action<Vector3> OnEnemyAIMovementInput;
 
+        public static Action<GameObject> EnemyAttackTarget;
+
         [SerializeField]
-        private Transform _target;
+        private GameObject _target;
 
         private HealthController _healthController;
+
+        private EnemyAttackController _enemyAttackController;
+
         private EnemyRuntimeStats _runtimeStats;
 
 
-        public void InitializeEnemyAI(EnemyRuntimeStats runtimeStats, HealthController healthController)
+        public void InitializeEnemyAI(EnemyRuntimeStats runtimeStats, HealthController healthController, EnemyAttackController enemyAttackController)
         {
             _healthController = healthController;
             _runtimeStats = runtimeStats;
+            _enemyAttackController = enemyAttackController;
         }
 
         private void Update()
         {
             HandleMovementTarget();
+            HandleAttack();
         }
 
         private void HandleMovementTarget()
@@ -48,6 +53,14 @@ namespace Controller
         private void MovementInput(Vector3 location)
         {
             OnEnemyAIMovementInput?.Invoke(location);
+        }
+
+        private void HandleAttack()
+        {
+            if(_target != null && _enemyAttackController.IsInAttackRange(_runtimeStats, _target))
+            {
+                EnemyAttackTarget?.Invoke(_target);
+            }
         }
     }
 }

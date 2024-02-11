@@ -18,6 +18,9 @@ namespace Controller
         [SerializeField]
         private EnemyAIController _enemyAIController;
 
+        [SerializeField]
+        private EnemyAttackController _enemyAttackController;
+
         private EnemyRuntimeStats _runtimeStats;
 
         private void Start()
@@ -26,7 +29,7 @@ namespace Controller
             _enemyMovement.moveSpeed = _runtimeStats.MoveSpeed;
             _enemyMovement.rotationSpeed = _runtimeStats.TurnRadius;
             _healthController.InitializeHealth(_runtimeStats);
-            _enemyAIController.InitializeEnemyAI(_runtimeStats, _healthController);
+            _enemyAIController.InitializeEnemyAI(_runtimeStats, _healthController, _enemyAttackController);
             _healthController.OnHealthDepleted += HandleDeath;
         }
 

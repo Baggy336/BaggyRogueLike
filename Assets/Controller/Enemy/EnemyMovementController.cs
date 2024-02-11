@@ -21,6 +21,7 @@ namespace Controller
         private void Start()
         {
             EnemyAIController.OnEnemyAIMovementInput += HandleMovement;
+            EnemyAttackController.StopMoving += StopMovement;
             movementDestination = GetAdjustedForGroundDestination(transform.position); // Set Initial movement
         }
 
@@ -65,6 +66,11 @@ namespace Controller
             transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
         }
 
+        private void StopMovement()
+        {
+            movementDestination = transform.position;
+        }
+
         private void SetRotationDestination(Vector3 destination)
         {
             Quaternion rotateDirection = GetRotationDirection(destination);
@@ -92,7 +98,8 @@ namespace Controller
 
         private void OnDestroy()
         {
-            EnemyAIController.OnEnemyAIMovementInput -= SetMovementDestination;
+            EnemyAIController.OnEnemyAIMovementInput -= HandleMovement;
+            EnemyAttackController.StopMoving -= StopMovement;
         }
     }
 }

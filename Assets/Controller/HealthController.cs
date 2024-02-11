@@ -9,33 +9,30 @@ namespace Controller
     {
         public event Action OnHealthDepleted;
 
-        public int currentHealth { get; private set; }
-
         private IRuntimeStats Stats;
 
         public void InitializeHealth(IRuntimeStats stats)
         {
             Stats = stats;
-            currentHealth = stats.CurrentHealth;
         }
 
         public void TakeDamage(int damageAmount)
         {
-            currentHealth -= damageAmount;
-            if (currentHealth <= 0)
+            Stats.CurrentHealth -= damageAmount;
+            if (Stats.CurrentHealth <= 0)
             {
-                currentHealth = 0;
+                Stats.CurrentHealth = 0;
                 DestroyObject();
             }
         }
 
         public void Heal(int healAmount)
         {
-            currentHealth += healAmount;
+            Stats.CurrentHealth += healAmount;
 
-            if (currentHealth >= Stats.MaxHealth)
+            if (Stats.CurrentHealth >= Stats.MaxHealth)
             {
-                currentHealth = Stats.MaxHealth;
+                Stats.CurrentHealth = Stats.MaxHealth;
             }
         }
 

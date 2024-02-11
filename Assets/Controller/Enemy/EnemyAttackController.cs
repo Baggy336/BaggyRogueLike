@@ -1,12 +1,10 @@
 using Domain;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Controller
 {
-    public class AttackController : MonoBehaviour
+    public class EnemyAttackController : MonoBehaviour
     {
         private GameObject attackTarget;
 
@@ -25,28 +23,30 @@ namespace Controller
 
         private void Start()
         {
-            InputController.OnAttackInput += SetAttackTarget;
+            EnemyAIController.EnemyAttackTarget += SetAttackTarget;
         }
 
         private void Update()
         {
-            HandleAttackRange();
+            HandleAttack();
         }
 
-        private void HandleAttackRange()
+        public bool IsInAttackRange(EnemyRuntimeStats runtimeStats, GameObject target)
         {
-            if(attackTarget != null)
+            if(runtimeStats.AttackRange >= Vector3.Distance(transform.position, target.transform.position))
             {
-                float distanceToTarget = Vector3.Distance(transform.position, attackTarget.transform.position);
-                if (distanceToTarget > RuntimeStats.AttackRange && isAttacking == false)
-                {
-                    MoveIntoAttackRange?.Invoke(attackTarget.transform.position);
-                }
-                else
-                {
-                    StopMoving?.Invoke();
-                    AttackTarget();
-                }
+                return false;
+            }
+
+            return true;
+        }
+
+        private void HandleAttack()
+        {
+            if (attackTarget != null)
+            {
+                StopMoving?.Invoke();
+                AttackTarget();
             }
         }
 
@@ -54,7 +54,7 @@ namespace Controller
         {
             //TODO attack the target
             isAttacking = true;
-
+            Debug.Log("Enemy Is Attacking");
             isAttacking = false;
         }
 
@@ -65,8 +65,7 @@ namespace Controller
 
         private void OnDestroy()
         {
-            InputController.OnAttackInput -= SetAttackTarget;
+            EnemyAIController.EnemyAttackTarget -= SetAttackTarget;
         }
-
     }
 }

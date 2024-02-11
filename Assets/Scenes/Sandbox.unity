@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 1188862203}
   - component: {fileID: 1188862204}
   - component: {fileID: 1188862205}
+  - component: {fileID: 1188862206}
   m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -481,6 +482,7 @@ MonoBehaviour:
   _enemyMovement: {fileID: 1188862204}
   _healthController: {fileID: 1188862197}
   _enemyAIController: {fileID: 1188862203}
+  _enemyAttackController: {fileID: 1188862206}
 --- !u!65 &1188862199
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -579,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af81892494ea0ef49b16c78b290a6a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 1490317187132043609}
+  _target: {fileID: 3682614106558075069}
 --- !u!114 &1188862204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,6 +611,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 1188862200}
   highlightMaterial: {fileID: 2100000, guid: b1a422f8b8f21b2418ae462dbbb111ce, type: 2}
+--- !u!114 &1188862206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188862195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d28558e56ddfd2459eafdd0d9310647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
 --- !u!136 &130658305055216540
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -710,9 +725,9 @@ GameObject:
   - component: {fileID: 1671705351043540134}
   - component: {fileID: 310413272098652584}
   - component: {fileID: 386089119188933541}
-  - component: {fileID: 7804331536302445980}
   - component: {fileID: 7804331536302445978}
   - component: {fileID: 7804331536302445979}
+  - component: {fileID: 7804331536302445980}
   m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
@@ -807,6 +822,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3682614106558075069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2018b6cbf1a17d244b65dc2982381bcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 5337f9b1908010247bcd2b3747254bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAttacking: 0

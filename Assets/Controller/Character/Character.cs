@@ -17,7 +17,7 @@ namespace Controller
         private HealthController _healthController;
 
         [SerializeField]
-        private AttackController _attackController;
+        private CharacterAttackController _attackController;
 
         private CharacterRuntimeStats _runtimeStats;
 
